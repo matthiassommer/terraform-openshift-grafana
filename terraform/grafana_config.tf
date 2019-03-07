@@ -1,9 +1,4 @@
-
-provider "kubernetes" {
-  version = "~> 1.5"
-}
-
-resource "kubernetes_config_map" "grafana-config" {
+resource "kubernetes_config_map" "default" {
   metadata {
     name      = "grafana-config"
     namespace = "${var.project}"

@@ -17,6 +17,5 @@ deploy-grafana:
 
 .PHONY: create
 create:
-	oc apply -f grafana_deployment.yaml
-	oc apply -f grafana_service.yaml
+	oc apply -f service.yaml
 	oc create -f route.json

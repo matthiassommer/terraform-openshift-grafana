@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "grafana-deployment" {
+resource "kubernetes_deployment" "default" {
   metadata {
     name      = "${var.app}"
     namespace = "${var.project}"
@@ -30,8 +30,6 @@ resource "kubernetes_deployment" "grafana-deployment" {
       }
 
       spec {
-        active_deadline_seconds = "21600"
-
         container {
           image = "grafana:latest"
           name  = "grafana"

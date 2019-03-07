@@ -1,0 +1,14 @@
+{
+    "apiVersion": "v1",
+    "kind": "Route",
+    "metadata": {
+        "name": "apigateway",
+        "namespace": "${var.project}",
+        "annotations": {
+            "project": "${var.project}"
+        }
+    },
+    "spec": {
+
+    }
+}

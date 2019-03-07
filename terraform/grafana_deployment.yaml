@@ -1,0 +1,50 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+  namespace: grafana-test-project
+spec:
+  selector:
+    app: grafana
+    deploymentconfig: grafana
+  strategy:
+    activeDeadlineSeconds: 21600
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: grafana
+        deploymentconfig: grafana
+    spec:
+      containers:
+        - image: grafana/grafana:latest
+          name: grafana
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 150m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: volume-xdtzh
+            - mountPath: /etc/grafana/grafana.ini
+              name: volume-et7q2
+              subPath: grafana.ini
+      volumes:
+        - name: volume-xdtzh
+          persistentVolumeClaim:
+            claimName: grafana-persistence-volume
+        - configMap:
+            defaultMode: 420
+            items:
+              - key: grafana.ini
+                path: grafana.ini
+            name: grafana-config
+          name: volume-et7q2

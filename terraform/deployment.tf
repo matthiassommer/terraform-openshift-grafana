@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "default" {
 
       spec {
         container {
-          image = "grafana:latest"
+          image = "grafana/grafana:latest"
           name  = "grafana"
 
           port {

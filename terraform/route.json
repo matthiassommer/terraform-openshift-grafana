@@ -3,12 +3,15 @@
     "kind": "Route",
     "metadata": {
         "name": "apigateway",
-        "namespace": "${var.project}",
+        "namespace": "grafana-test-project",
         "annotations": {
-            "project": "${var.project}"
+            "project": "grafana-test-project"
         }
     },
     "spec": {
-
+        "to": {
+            "kind": "Service",
+            "name": "grafana"
+        }
     }
 }

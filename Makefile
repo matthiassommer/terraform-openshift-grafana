@@ -11,10 +11,6 @@ plan:
 apply:
 	terraform apply
 
-.PHONY: deploy
-deploy-grafana:
-	oc rollout latest grafana -n grafana-test-project
-
 .PHONY: create-route
 create-route:
 	oc apply -f terraform/route.json

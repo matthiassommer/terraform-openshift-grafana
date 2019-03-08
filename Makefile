@@ -15,7 +15,6 @@ apply:
 deploy-grafana:
 	oc rollout latest grafana -n grafana-test-project
 
-.PHONY: create
-create:
-	oc apply -f service.yaml
-	oc create -f route.json
+.PHONY: create-route
+create-route:
+	oc apply -f terraform/route.json

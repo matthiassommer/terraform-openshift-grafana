@@ -13,4 +13,4 @@ apply:
 
 .PHONY: create-route
 create-route:
-	oc apply -f terraform/route.json
+	oc apply -f route.json
